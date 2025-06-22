@@ -1,0 +1,14 @@
+baseURL: https://example.org/
+languageCode: en-us
+title: Scribbling Note
+theme: ["PaperMod"]
+params:
+  homeInfoParams:
+    Title: by Ilham Wahayu Yanre
+    Content: _Ilmu adalah buruan dan tulisan adalah pengikatnya._
+
+  socialIcons: # optional
+    - name: "<platform>"
+      url: "<link>"
+    - name: "<platform 2>"
+      url: "<link2>"
