@@ -6,4 +6,4 @@ title: 'Traceroute'
 
 ## Traceroute
 
-![Image description](/posts/traceroute/traceroute-1.png)
+![Image description](/traceroute-1.png)

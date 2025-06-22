@@ -17,11 +17,11 @@
     </item>
     <item>
       <title>Traceroute</title>
-      <link>http://localhost:1313/posts/traceroute/traceroute/</link>
+      <link>http://localhost:1313/posts/traceroute/</link>
       <pubDate>Sun, 22 Jun 2025 10:38:01 +0700</pubDate>
-      <guid>http://localhost:1313/posts/traceroute/traceroute/</guid>
+      <guid>http://localhost:1313/posts/traceroute/</guid>
       <description>&lt;h2 id=&#34;traceroute&#34;&gt;Traceroute&lt;/h2&gt;
-&lt;p&gt;&lt;img alt=&#34;Image description&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/traceroute-1.png&#34;&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;img alt=&#34;Image description&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/traceroute/traceroute-1.png&#34;&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>My First Post</title>
