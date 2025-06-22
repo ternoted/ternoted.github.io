@@ -2,6 +2,11 @@ baseURL: https://example.org/
 languageCode: en-us
 title: Scribbling Note
 theme: ["PaperMod"]
+
+caches:
+  images:
+    dir: :cacheDir/images
+
 params:
   homeInfoParams:
     Title: by Ilham Wahayu Yanre
