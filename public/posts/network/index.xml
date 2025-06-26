@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Scribbling Note</title>
-    <link>http://localhost:1313/</link>
-    <description>Recent content on Scribbling Note</description>
+    <title>Network on Scribbling Note</title>
+    <link>http://localhost:1313/posts/network/</link>
+    <description>Recent content in Network on Scribbling Note</description>
     <image>
       <title>Scribbling Note</title>
       <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
@@ -12,21 +12,13 @@
     <generator>Hugo -- 0.147.8</generator>
     <language>en</language>
     <lastBuildDate>Sun, 22 Jun 2025 10:38:01 +0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/posts/network/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mengungkap Cara Kerja Traceroute</title>
       <link>http://localhost:1313/posts/network/traceroute/</link>
       <pubDate>Sun, 22 Jun 2025 10:38:01 +0700</pubDate>
       <guid>http://localhost:1313/posts/network/traceroute/</guid>
       <description></description>
-    </item>
-    <item>
-      <title>My First Post</title>
-      <link>http://localhost:1313/posts/first-post/</link>
-      <pubDate>Thu, 19 Jun 2025 21:24:28 +0700</pubDate>
-      <guid>http://localhost:1313/posts/first-post/</guid>
-      <description>&lt;h2 id=&#34;hi-there&#34;&gt;Hi there!&lt;/h2&gt;
-&lt;p&gt;This is my first website ever!&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
