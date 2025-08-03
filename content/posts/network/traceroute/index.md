@@ -6,7 +6,7 @@ author: ["Ilham Wahayu Yanre"]
 cover:
   image: image.png
   hiddenInList: true
-aliases: ["/papermod-installation"]
-series: ["PaperMod"]
+aliases: ["/network"]
+series: ["Network"]
 ShowBreadCrumbs: true
 ---
