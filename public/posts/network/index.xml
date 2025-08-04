@@ -18,7 +18,7 @@
       <link>http://localhost:1313/posts/network/studi-kasus-mtu/</link>
       <pubDate>Sun, 03 Aug 2025 10:56:21 +0700</pubDate>
       <guid>http://localhost:1313/posts/network/studi-kasus-mtu/</guid>
-      <description>&lt;p&gt;Pernah mengalami kendala jaringan di mana koneksi client ke HTTPS server &amp;ldquo;nyangkut&amp;rdquo; secara random, padahal HTTP normal dan port checking juga aman? Bisa jadi masalahnya ada pada MTU.&lt;/p&gt;
+      <description>&lt;p&gt;Pernah mengalami kendala jaringan di mana koneksi client ke HTTPS server &amp;ldquo;nyangkut&amp;rdquo; secara random, padahal HTTP normal, firewall blocking tidak ada, port checking juga aman? Bisa jadi masalahnya ada pada MTU.&lt;/p&gt;
 &lt;p&gt;Beberapa waktu lalu saya dihadapkan dengan isu jaringan yang belum pernah saya temui sebelumnya. Di mana curl dari client ke server menggunakan HTTP aman, akan tetapi curl menggunakan HTTPS malah nyangkut lumayan lama sampai connection reset. Analisa saya, jika HTTP saja bisa, artinya tidak ada masalah pada layer 3 dong antara client dan server. Check port 80 dan 443 dari client ke server pun statusnya juga open, jadi layer 4 pun seharusnya juga aman kan? Akan tetapi ICMP server mati sehingga server tidak bisa di-probe. Selanjutnya saya coba curl HTTPS ke server menggunakan jaringan lain, ternyata bisa. Artinya masalah ini hanya terjadi di jaringan yang saya gunakan, bukan faktor server atau perangkat client.&lt;/p&gt;</description>
     </item>
     <item>

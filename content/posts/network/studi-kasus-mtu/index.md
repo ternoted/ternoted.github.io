@@ -2,6 +2,7 @@
 date: '2025-08-03T10:56:21+07:00'
 draft: false
 title: 'Studi Kasus MTU'
+summary: Replikasi kasus koneksi HTTPS "nyangkut" yang diakibatkan oleh MTU
 author: ["Ilham Wahayu Yanre"]
 cover:
   image: cover.png
@@ -9,6 +10,8 @@ cover:
 aliases: ["/network"]
 series: ["Network"]
 ShowBreadCrumbs: true
+ShowToc: true
+tocopen: true
 ---
 Pernah mengalami kendala jaringan di mana koneksi client ke HTTPS server "nyangkut" secara random, padahal HTTP normal, firewall blocking tidak ada, port checking juga aman? Bisa jadi masalahnya ada pada MTU.
 
@@ -18,7 +21,8 @@ Setelah mencari-cari jawaban di internet, saya menemukan solusi untuk menurunkan
 
 Setelah menganalisa lebih lanjut, Alhamdulillah akhirnya saya berhasil memahami teknis permasalahan yang terjadi tersebut.
 
->- TL;DR: Masalah ini terjadi karena ada perbedaan nilai MTU dari jalur yang dilewati trafik antara client-server. Lalu karena ICMP pada server mati sehingga PMTUD tidak berfungsi. Kemudian karena jalur trafik antar client-server asimetris.
+## TL;DR
+>- Masalah ini terjadi karena ada perbedaan nilai MTU dari jalur yang dilewati trafik antara client-server. Lalu karena ICMP pada server mati sehingga PMTUD tidak berfungsi. Kemudian karena jalur trafik antar client-server asimetris.
 
 Jaringan client memiliki beberapa koneksi BGP ke upstream yang berbeda-beda. Trafik dari client ke server melewati BGP A, akan tetapi kembali lewat BGP B. BGP B terhubung ke upstream menggunakan EoIP. MTU dari EoIP adalah 1458, karena 42 bytes dipakai untuk EoIP encapsulation. Jadi ketika client-server melakukan TCP handshake, maka MSS client yang diterima server adalah 1460 karena melewati BGP A, sedangkan MSS server yang diterima client adalah 1418 karena dipangkas oleh EoIP interface BGP B. Karena MSS client yang diterima server adalah 1460, maka server akan mengirim data dengan MSS 1460 juga. Padahal data dengan MSS 1460 tidak bisa melewati jalur BGP B yang MTU-nya hanya 1458. Lalu karena ICMP server dimatikan, Router BGP B pun tidak bisa memberi tahu server menggunakan PMTUD bahwa ukuran data yang dia kirim harus disesuaikan dengan MTU si Router, protocol yang memanfaatkan ICMP. Jadi ketika server mengirimkan data dengan MSS 1460, maka data ini akan di-drop oleh Router BGP B sehingga koneksinya akan "nyangkut". Makanya ketika MTU client diturunkan menjadi 1400, koneksi client-server kembali normal. Karena MSS client yang dikirim ke server juga akan lebih kecil.
 
