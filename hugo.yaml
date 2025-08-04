@@ -19,7 +19,7 @@ params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: Scribbling Note
   description: "_Ilmu adalah buruan dan tulisan adalah pengikatnya._"
-  keywords: [Blog, Portfolio, PaperMod]
+  keywords: [Blog, Portfolio, Ternoted]
   author: Ilham Wahayu Yanre
   # author: ["Me", "You"] # multiple authors
   images: ["<link or path of image for opengraph, twitter-cards>"]
@@ -74,7 +74,7 @@ params:
 
   # home-info mode
   homeInfoParams:
-    Title: "Hi there \U0001F44B"
+    Title: "Hello there \U0001F44B"
     Content: Just a place where I log the cool, weird, and tricky things I run into while working in IT.
 
   socialIcons:
@@ -87,9 +87,9 @@ params:
 
   analytics:
     google:
-      SiteVerificationTag: "XYZabc"
+      SiteVerificationTag: "t-zfRcTeMVpKz-zJZ4kAapCmfthCxad2xD9RS7KqRW0"
     bing:
-      SiteVerificationTag: "XYZabc"
+      SiteVerificationTag: "8F4356E9790CB1DA67495F1E3A1012B3"
     yandex:
       SiteVerificationTag: "XYZabc"
 
@@ -145,3 +145,7 @@ outputs:
     - HTML
     - RSS
     - JSON # necessary for search
+
+sitemap:
+  changefreq: "monthly"
+  priority: 0.5
