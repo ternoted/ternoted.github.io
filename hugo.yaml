@@ -1,5 +1,5 @@
 baseURL: https://ternoted.github.io/
-title: Scribbling Note
+title: Ter-noted
 pagination:
   pagerSize:   5
 theme: PaperMod
@@ -17,7 +17,7 @@ minify:
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
-  title: Scribbling Note
+  title: Ter-noted
   description: "_Ilmu adalah buruan dan tulisan adalah pengikatnya._"
   keywords: [Blog, Portfolio, Ternoted]
   author: Ilham Wahayu Yanre
@@ -53,7 +53,7 @@ params:
     safari_pinned_tab: "<link / abs url>"
 
   label:
-    text: "Home"
+    text: "Ter-noted"
     icon: /apple-touch-icon.png
     iconHeight: 35
 
@@ -75,7 +75,7 @@ params:
   # home-info mode
   homeInfoParams:
     Title: "Hello there \U0001F44B"
-    Content: Just a place where I log the cool, weird, and tricky things I run into while working in IT.
+    Content: Just a place where I note the cool, weird, and tricky things I run into while working in IT.
 
   socialIcons:
     - name: linkedin
