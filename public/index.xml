@@ -20,20 +20,5 @@
       <guid>http://localhost:1313/posts/network/studi-kasus-mtu/</guid>
       <description>Replikasi kasus koneksi HTTPS &amp;ldquo;nyangkut&amp;rdquo; yang diakibatkan oleh MTU</description>
     </item>
-    <item>
-      <title>Mengungkap Cara Kerja Traceroute</title>
-      <link>http://localhost:1313/posts/network/traceroute/</link>
-      <pubDate>Sun, 22 Jun 2025 10:38:01 +0700</pubDate>
-      <guid>http://localhost:1313/posts/network/traceroute/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>My First Post</title>
-      <link>http://localhost:1313/posts/first-post/</link>
-      <pubDate>Thu, 19 Jun 2025 21:24:28 +0700</pubDate>
-      <guid>http://localhost:1313/posts/first-post/</guid>
-      <description>&lt;h2 id=&#34;hi-there&#34;&gt;Hi there!&lt;/h2&gt;
-&lt;p&gt;This is my first website ever!&lt;/p&gt;</description>
-    </item>
   </channel>
 </rss>

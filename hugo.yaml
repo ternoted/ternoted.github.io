@@ -75,15 +75,15 @@ params:
   # home-info mode
   homeInfoParams:
     Title: "Hi there \U0001F44B"
-    Content: Welcome to my blog
+    Content: Just a place where I log the cool, weird, and tricky things I run into while working in IT.
 
   socialIcons:
-    - name: x
-      url: "https://x.com/"
-    - name: stackoverflow
-      url: "https://stackoverflow.com"
+    - name: linkedin
+      url: "https://linkedin.com/in/ilham-wahayu-yanre/"
     - name: github
-      url: "https://github.com/"
+      url: "https://github.com/ternoted"
+    - name: instagram
+      url: "https://www.instagram.com/wa.ha.yu"  
 
   analytics:
     google:
@@ -99,7 +99,7 @@ params:
     hiddenInSingle: false # hide on single page
 
   editPost:
-    URL: "https://github.com/<path_to_repo>/content"
+    URL: "https://github.com/ternoted/ternoted.github.io/tree/main/content"
     Text: "Suggest Changes" # edit text
     appendFilePath: true # to append file path to Edit link
 
@@ -116,18 +116,15 @@ params:
     keys: ["title", "permalink", "summary", "content"]
 menu:
   main:
-    - identifier: categories
-      name: categories
-      url: /categories/
-      weight: 10
-    - identifier: tags
-      name: tags
-      url: /tags/
-      weight: 20
-    - identifier: example
-      name: example.org
-      url: https://example.org
-      weight: 30
+        - name: Archive
+          url: archives
+          weight: 5
+        - name: Search
+          url: search/
+          weight: 10
+        - name: Tags
+          url: tags/
+          weight: 10
 # Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
 pygmentsUseClasses: true
 markup:
@@ -142,3 +139,9 @@ markup:
 caches:
   images:
     dir: :cacheDir/images
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # necessary for search

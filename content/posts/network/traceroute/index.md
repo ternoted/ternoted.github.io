@@ -1,6 +1,6 @@
 ---
 date: '2025-06-22T10:38:01+07:00'
-draft: false
+draft: true
 title: 'Mengungkap Cara Kerja Traceroute'
 author: ["Ilham Wahayu Yanre"]
 cover:

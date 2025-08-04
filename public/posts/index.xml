@@ -11,15 +11,7 @@
     </image>
     <generator>Hugo -- 0.147.8</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 19 Jun 2025 21:24:28 +0700</lastBuildDate>
+    <lastBuildDate></lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>My First Post</title>
-      <link>http://localhost:1313/posts/first-post/</link>
-      <pubDate>Thu, 19 Jun 2025 21:24:28 +0700</pubDate>
-      <guid>http://localhost:1313/posts/first-post/</guid>
-      <description>&lt;h2 id=&#34;hi-there&#34;&gt;Hi there!&lt;/h2&gt;
-&lt;p&gt;This is my first website ever!&lt;/p&gt;</description>
-    </item>
   </channel>
 </rss>
