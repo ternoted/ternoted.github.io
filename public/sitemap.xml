@@ -2,22 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/posts/network/cara-kerja-traceroute/</loc>
+    <lastmod>2025-08-05T20:56:21+07:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>http://localhost:1313/posts/network/</loc>
-    <lastmod>2025-08-03T10:56:21+07:00</lastmod>
+    <lastmod>2025-08-05T20:56:21+07:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2025-08-03T10:56:21+07:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>http://localhost:1313/posts/network/studi-kasus-mtu/</loc>
-    <lastmod>2025-08-03T10:56:21+07:00</lastmod>
+    <lastmod>2025-08-05T20:56:21+07:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>http://localhost:1313/</loc>
+    <lastmod>2025-08-05T20:56:21+07:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>http://localhost:1313/posts/network/studi-kasus-mtu/</loc>
     <lastmod>2025-08-03T10:56:21+07:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

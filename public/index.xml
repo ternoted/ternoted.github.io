@@ -9,10 +9,17 @@
       <url>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
       <link>http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
-    <generator>Hugo -- 0.148.2</generator>
+    <generator>Hugo -- 0.147.8</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 03 Aug 2025 10:56:21 +0700</lastBuildDate>
+    <lastBuildDate>Tue, 05 Aug 2025 20:56:21 +0700</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cara Kerja Traceroute</title>
+      <link>http://localhost:1313/posts/network/cara-kerja-traceroute/</link>
+      <pubDate>Tue, 05 Aug 2025 20:56:21 +0700</pubDate>
+      <guid>http://localhost:1313/posts/network/cara-kerja-traceroute/</guid>
+      <description>Membahas cara kerja traceroute dan beberapa miskonsepsi dalam menganalisa hasil traceroute</description>
+    </item>
     <item>
       <title>Studi Kasus MTU</title>
       <link>http://localhost:1313/posts/network/studi-kasus-mtu/</link>
