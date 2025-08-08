@@ -65,7 +65,7 @@ Kesimpulannya, kita tidak bisa mengetahui jalur dari target ke pengirim dari has
 ### 2. Terfokus pada packet loss, ping tinggi, atau RTO pada salah satu Router atau lebih sebelum mencapai tujuan.
 
 > {{< collapse summary="**Gambar 6. Packet Loss dan RTO Sebelum Mencapai Tujuan**" >}}
-[![Alt text](pl_rto.png "PL & RTO Sebelum Mencapai Tujuan")](pl_rtopl.png)
+[![Alt text](pl_rto.png "PL & RTO Sebelum Mencapai Tujuan")](pl_rto.png)
 {{</ collapse >}}
 
 Pada Gambar 6 ada packet loss sebesar 23.1% pada IP 10.0.3.1 (R3), dan RTO di Router selanjutnya. Lalu apakah ada masalah dengan hasil traceroute ini? Jawabannya adalah tidak. Packet loss atau RTO yang terjadi di tengah jalan tidak mengindikasikan apapun mengenai koneksi antara pengirim dan penerima. Seperti yang sudah dijelaskan di atas, jalur balik dari masing-masing Router ke pengirim bergantung pada routing policy masing-masing Router tersebut. Packet loss yang terjadi pada R3 menunjukkan ada masalah antara pengirim (PC1) dan Router tersebut, bukan masalah antara PC1 dan PC2. Karena antara PC1 dan PC2, peran R3 hanyalah meneruskan packet. Selama ping kecil dan packet loss pada tujuan adalah 0%, maka dapat disimpulkan bahwa koneksi client ke tujuan adalah normal. Sedangkan RTO yang terjadi pada Router ke 4 menunjukkan bahwa ada kemungkinan firewall yang memblokir ICMP antara Router tersebut dengan PC1. Akan tetapi tidak mempengaruhi koneksi antara PC1 dan PC2.
