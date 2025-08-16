@@ -2,6 +2,7 @@ baseURL: https://ternoted.github.io/
 title: Ter-noted
 pagination:
   pagerSize:   5
+  copyright: "© [PaperMod Contributors](https://github.com/adityatelange/hugo-PaperMod/graphs/contributors)"
 theme: PaperMod
 
 enableRobotsTXT: false
