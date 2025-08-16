@@ -20,3 +20,8 @@ Untuk tutorial ini dan tutorial lanjutan tentang Prometheus dan Grafana, server 
 
 >- Pastikan waktu pada server sudah akurat dan ```System clock synchronized: yes```. Cek menggunakan ```timedatectl```.
 >- Tutorial ini dibuat dengan asumsi SNMP pada Router atau Switch bisa diakses dari server. Cek menggunakan ```snmpwalk```.
+
+```bash
+grafana@grafana-wahayu:~$ cd /tmp
+grafana@grafana-wahayu:/tmp$ wget https://github.com/prometheus/snmp_exporter/releases/download/v0.29.0/snmp_exporter-0.29.0.linux-amd64.tar.gz
+```
