@@ -19,8 +19,9 @@ Artikel ini membahas tentang cara menginstall [SNMP Exporter](https://github.com
 ## Pre-requisites
 
 - **Pemahaman dasar** dalam menggunakan Linux  
-- **Pemahaman dasar** mengenai *MIB* (Management Information Base) dan *SNMP* (Simple Network Management Protocol)  
-- Untuk tutorial ini dan lanjutan tentang **Prometheus** dan **Grafana**, server yang digunakan adalah:  
+- **Pemahaman dasar** mengenai *MIB* (Management Information Base) dan *SNMP* (Simple Network Management Protocol)
+- **Mengetahui** fungsi **Grafana** dan **Prometheus**  
+- Tutorial ini dan lanjutannya tentang **Prometheus** dan **Grafana** akan menggunakan server:  
   - Ubuntu `24.04.3 LTS (Minimal Version)`
 - Pastikan waktu pada server sudah akurat dan *System clock synchronized: yes*.  
   - Cek menggunakan command:  
@@ -137,8 +138,158 @@ Kita bisa menggunakan software [MIB Browser](https://ireasoning.com/download.sht
 
 [![MIB Browser](mib_browser.png "MIB Browser")](mib_browser.png)
 
+### Konfigurasi File Generator
+
 Selanjutnya kita akan membuat file generator untuk meng-"generate" file ```snmp.yml```:
 
 ```bash
+grafana@grafana-cbtp:~/snmp_exporter/generator$ sudo nano generator_custom.yml 
+```
+```bash
+# Isi file generator_custom.yml dengan format sepert ini:
+ auths:
+  public_v2:
+    version: 2
+    community: public
+modules:
+  mikrotik:
+    walk:
+      - sysDescr          #MIB Nama/deskripsi perangkat
+      - sysUpTime         #MIB Uptime perangkat
+      - hrSystemDate      #MIB Jam dan tanggal pada perangkat
+      - hrProcessorLoad   #MIB Penggunaan CPU
+      - mtxrGaugeTable    #MIB Sensor-sensor suhu dan exhaust fan
+    lookups:
+      - source_indexes: [mtxrGaugeIndex]
+        lookup: mtxrGaugeName
+      - source_indexes: [mtxrGaugeIndex]
+        lookup: mtxrGaugeValue
+        drop_source_indexes: false
+    overrides:
+      ignore_true: &ignore
+        ignore: true
+      mtxrGaugeUnit:
+        type: EnumAsInfo
+      mtxrGaugeValue: *ignore
+      mtxrGaugeName: *ignore
 
 ```
+```bash
+# Eksekusi generator untuk membuat file snmp.yml
+grafana@grafana-cbtp:~/snmp_exporter/generator$ ./generator generate -m mibs/ -g generator_custom.yml -o /etc/prometheus/snmp_exporter/snmp.yml
+
+# -m = Directory mibs yang ter-download saat instalasi SNMP Exporter Generator
+# -g = File generator yang dibuat
+# -o = Output dari generator (snmp.yml) (Disarankan untuk meletakkan output ke directory berbeda terlebih dahulu sebelum dipindahkan ke directory config snmp_exporter)
+```
+
+```bash
+# Output snmp.yml akan seperti ini:
+# WARNING: This file was auto-generated using snmp_exporter generator, manual changes will be lost.
+auths:
+  public_v2:
+    community: public
+    security_level: noAuthNoPriv
+    auth_protocol: MD5
+    priv_protocol: DES
+    version: 2
+modules:
+  mikrotik:
+    walk:
+    - 1.3.6.1.2.1.25.3.3.1.2
+    - 1.3.6.1.4.1.14988.1.1.3.100
+    get:
+    - 1.3.6.1.2.1.1.1.0
+    - 1.3.6.1.2.1.1.3.0
+    - 1.3.6.1.2.1.25.1.2.0
+    metrics:
+    - name: sysDescr
+      oid: 1.3.6.1.2.1.1.1
+      type: DisplayString
+      help: A textual description of the entity - 1.3.6.1.2.1.1.1
+    - name: sysUpTime
+      oid: 1.3.6.1.2.1.1.3
+      type: gauge
+      help: The time (in hundredths of a second) since the network management portion
+        of the system was last re-initialized. - 1.3.6.1.2.1.1.3
+    - name: hrSystemDate
+      oid: 1.3.6.1.2.1.25.1.2
+      type: DateAndTime
+      help: The host's notion of the local date and time of day. - 1.3.6.1.2.1.25.1.2
+    - name: hrProcessorLoad
+      oid: 1.3.6.1.2.1.25.3.3.1.2
+      type: gauge
+      help: The average, over the last minute, of the percentage of time that this
+        processor was not idle - 1.3.6.1.2.1.25.3.3.1.2
+      indexes:
+      - labelname: hrDeviceIndex
+        type: gauge
+    - name: mtxrGaugeIndex
+      oid: 1.3.6.1.4.1.14988.1.1.3.100.1.1
+      type: gauge
+      help: ' - 1.3.6.1.4.1.14988.1.1.3.100.1.1'
+      indexes:
+      - labelname: mtxrGaugeIndex
+        type: gauge
+      lookups:
+      - labels:
+        - mtxrGaugeIndex
+        labelname: mtxrGaugeName
+        oid: 1.3.6.1.4.1.14988.1.1.3.100.1.2
+        type: DisplayString
+      - labels:
+        - mtxrGaugeIndex
+        labelname: mtxrGaugeValue
+        oid: 1.3.6.1.4.1.14988.1.1.3.100.1.3
+        type: gauge
+    - name: mtxrGaugeUnit
+      oid: 1.3.6.1.4.1.14988.1.1.3.100.1.4
+      type: EnumAsInfo
+      help: units - 1.3.6.1.4.1.14988.1.1.3.100.1.4
+      indexes:
+      - labelname: mtxrGaugeIndex
+        type: gauge
+      lookups:
+      - labels:
+        - mtxrGaugeIndex
+        labelname: mtxrGaugeName
+        oid: 1.3.6.1.4.1.14988.1.1.3.100.1.2
+        type: DisplayString
+      - labels:
+        - mtxrGaugeIndex
+        labelname: mtxrGaugeValue
+        oid: 1.3.6.1.4.1.14988.1.1.3.100.1.3
+        type: gauge
+      enum_values:
+        1: celsius
+        2: rpm
+        3: dV
+        4: dA
+        5: dW
+        6: status
+
+```
+
+### Hasil Akhir
+
+Apabila file ```snmp.yml``` sudah dipindah ke directory config ```/etc/prometheus/snmp_exporter/snmp.yml```, selanjutnya restart service snmp_exporter.
+```bash
+grafana@grafana-cbtp:~/snmp_exporter/generator$ sudo systemctl restart snmp_exporter
+```
+Lalu akses UI SNMP Exporter melalui browser dengan URL seperti berikut:
+```
+http://192.168.100.188:9116/snmp?target=192.168.100.13&auth=public_v2&module=mikrotik
+```
+```bash
+# http://192.168.100.188:9116 = IP dan port server
+# target=192.168.100.13 = IP perangkat yang ingin dimonitor
+# auth=public_v2 = Authentication name. Default-nya adalah ini untuk perangkat dengan SNMPv2 (tercantum di snmp.yml)
+# module=mikrotik = nama module (tercantum di snmp.yml)
+```
+[![SNMP Exporter](ui_snmp_exporter-2.png "SNMP Exporter")](ui_snmp_exporter-2.png)
+
+Gambar di atas menunjukkan bahwa server berhasil menarik data SNMP sysDescr, sysUptime, hrSystemDate, hrProcessorLoad, dan mtrGaugeTable dari perangkat target.
+
+## Penutup
+
+Di akhir tutorial ini kita telah berhasil dalam menginstall SNMP Exporter beserta generator-nya. Kemudian SNMP Exporter juga sudah berhasil menarik data SNMP dari target. Di artikel selanjutnya kita akan membahas tentang Prometheus dan Grafana. Karena tujuan utama kita adalah memvisualisasikan metric-metric SNMP ini dengan grafik yang enak dipandang dan mudah dipahami menggunakan Grafana. Sedangkan Prometheus akan berfungsi sebagai data source untuk Grafana.

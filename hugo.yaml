@@ -2,6 +2,7 @@ baseURL: https://ternoted.github.io/
 title: Ter-noted
 pagination:
   pagerSize:   5
+copyright: "© 2025 [Ilham Wahayu Yanre](https://github.com/ternoted/ternoted.github.io)"
 theme: PaperMod
 
 enableRobotsTXT: false
