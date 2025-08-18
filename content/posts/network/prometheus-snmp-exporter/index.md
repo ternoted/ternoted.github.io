@@ -1,6 +1,6 @@
 ---
 date: '2025-08-15T23:05:48+07:00'
-draft: true
+draft: false
 title: 'Prometheus SNMP Exporter'
 summary: Tutorial instalasi SNMP-Exporter dan cara penggunaannya untuk Prometheus
 author: ["Ilham Wahayu Yanre"]
