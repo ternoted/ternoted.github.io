@@ -53,6 +53,12 @@ grafana@grafana-wahayu:/tmp/snmp_exporter-0.29.0.linux-amd64$ sudo mv snmp_expor
 grafana@grafana-wahayu:/tmp/snmp_exporter-0.29.0.linux-amd64$ sudo mkdir -p /etc/prometheus/snmp_exporter/
 grafana@grafana-wahayu:/tmp/snmp_exporter-0.29.0.linux-amd64$ sudo mv snmp.yml /etc/prometheus/snmp_exporter/
 
+# Buat user yang akan digunakan untuk systemd SNMP Exporter dan Prometheus
+grafana@grafana-wahayu:/tmp/snmp_exporter-0.29.0.linux-amd64$ sudo useradd --system --no-create-home --shell /usr/sbin/nologin prometheus
+
+# Ganti ownership config directory (/etc/prometheus/*) ke user prometheus
+grafana@grafana-wahayu:/tmp/snmp_exporter-0.29.0.linux-amd64$ sudo chown prometheus:prometheus /etc/prometheus/*
+
 # Buat file systemd untuk snmp_exporter
 grafana@grafana-wahayu:/tmp/snmp_exporter-0.29.0.linux-amd64$ sudo nano /etc/systemd/system/snmp_exporter.service
 
@@ -68,7 +74,7 @@ After=network-online.target
 # This assumes you are running snmp_exporter under the user "grafana"
 
 [Service]
-User=grafana
+User=prometheus
 Restart=on-failure
 ExecStart=/usr/local/bin/snmp_exporter --config.file=/etc/prometheus/snmp_exporter/snmp.yml
 
@@ -143,7 +149,7 @@ Kita bisa menggunakan software [MIB Browser](https://ireasoning.com/download.sht
 Selanjutnya kita akan membuat file generator untuk meng-"generate" file ```snmp.yml```:
 
 ```bash
-grafana@grafana-cbtp:~/snmp_exporter/generator$ sudo nano generator_custom.yml 
+grafana@grafana-wahayu:~/snmp_exporter/generator$ sudo nano generator_custom.yml 
 ```
 ```bash
 # Isi file generator_custom.yml dengan format sepert ini:
@@ -176,7 +182,7 @@ modules:
 ```
 ```bash
 # Eksekusi generator untuk membuat file snmp.yml
-grafana@grafana-cbtp:~/snmp_exporter/generator$ ./generator generate -m mibs/ -g generator_custom.yml -o /etc/prometheus/snmp_exporter/snmp.yml
+grafana@grafana-wahayu:~/snmp_exporter/generator$ ./generator generate -m mibs/ -g generator_custom.yml -o /etc/prometheus/snmp_exporter/snmp.yml
 
 # -m = Directory mibs yang ter-download saat instalasi SNMP Exporter Generator
 # -g = File generator yang dibuat
@@ -274,7 +280,7 @@ modules:
 
 Apabila file ```snmp.yml``` sudah dipindah ke directory config ```/etc/prometheus/snmp_exporter/snmp.yml```, selanjutnya restart service snmp_exporter.
 ```bash
-grafana@grafana-cbtp:~/snmp_exporter/generator$ sudo systemctl restart snmp_exporter
+grafana@grafana-wahayu:~/snmp_exporter/generator$ sudo systemctl restart snmp_exporter
 ```
 Lalu akses UI SNMP Exporter melalui browser dengan URL seperti berikut:
 ```
