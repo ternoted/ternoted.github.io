@@ -54,9 +54,8 @@ Apabila Client mengirim packet sebesar 1500 bytes dengan DF=0, lalu packet melew
 >- Fokus dari pembahasan ini adalah behavior dari MTU. Jadi untuk konfigurasi setupnya tidak dibahas di sini.
 >- Trafik pada interface client dan server akan dimonitor menggunakan wireshark
 
-> {{< collapse summary="**Gambar 1. Topologi**" >}}
-[![Alt text](topologi.png "Topologi")](topologi.png)
-{{</ collapse >}}
+[![Gambar 1. Topologi](http-topologi.png#center "Gambar 1. Topologi")](http-topologi.png)
+
 
 ### Simulasi 1. Keadaan Normal
 
@@ -116,12 +115,10 @@ ubuntu@Client:~$
 
 Di atas terlihat bahwa curl ke HTTPS hasilnya normal.
 
-> {{< collapse summary="**Gambar 2. Wireshark Client**" >}}
-[![Alt text](1wireshark_client.png "Topologi")](1wireshark_client.png)
-{{</ collapse >}}
-> {{< collapse summary="**Gambar 3. Wireshark Server**" >}}
-[![Alt text](2wireshark_client.png "Topologi")](2wireshark_client.png)
-{{</ collapse >}}
+[![Gambar 2. Wireshark Client](http-1wireshark_client.png "Gambar 2. Wireshark Client")](http-1wireshark_client.png)
+
+[![Gambar 3. Wireshark Server](http-2wireshark_client.png "Gambar 3. Wireshark Server")](http-2wireshark_client.png)
+
 
 Pada Gambar 2 dan 3, terlihat MSS=1460 dari client maupun dari server ketika melakukan TCP handshake.
 
@@ -183,12 +180,9 @@ Connection: keep-alive
 
 Terlihat curl ke HTTPS server masih normal. Tapi proses apa yang berubah ketika MTU pada Router yang dilewati packet diset lebih kecil?
 
-> {{< collapse summary="**Gambar 4. Wireshark Client**" >}}
-[![Alt text](2wireshark_client.png "Topologi")](2wireshark_client.png)
-{{</ collapse >}}
-> {{< collapse summary="**Gambar 5. Wireshark Server**" >}}
-[![Alt text](2wireshark_server.png "Topologi")](2wireshark_server.png)
-{{</ collapse >}}
+[![Gambar 4. Wireshark Client](http-2wireshark_client.png "Gambar 4. Wireshark Client")](http-2wireshark_client.png)
+
+[![Gambar 5. Wireshark Server](http-2wireshark_server.png "Gambar 5. Wireshark Server")](http-2wireshark_server.png)
 
 Perhatikan item no 142 pada Gambar 4. MSS server yang diterima oleh client masih 1460, padahal Router yang dilewati packet dari server sudah diset ke 1300. Kemungkinan di sini PMTUD belum terjadi. Tapi perhatikan item no 97-99 pada Gambar 5. Item 97 menunjukkan bahwa Router dengan IP 50.0.0.1 (Router-ISP-B) mengirim pesan ICMP "Fragmentation Needed" ke IP 99.99.99.98 (HTTPS server). Di sinilah PMTUD terjadi. Ini karena pada item no 96 server mengirim data sebesar 1404 melewati Router-ISP-B, padahal interface pada Router tersebut MTU-nya hanya 1300. Kemudian pada item no 98-99, server mentransmit ulang packet TCP masing-masing sebesar 1314 dan 156 bytes. 1314 lebih besar 14 bytes dibanding 1300, namun hal ini normal (overhead).
 
@@ -215,12 +209,9 @@ ubuntu@Client:~$
 
 Terlihat curl gagal dilakukan dan nyangkut ketika melakukan TLS 1.3 Handshake.
 
-> {{< collapse summary="**Gambar 6. Wireshark Client**" >}}
-[![Alt text](3wireshark_client.png "Topologi")](3wireshark_client.png)
-{{</ collapse >}}
-> {{< collapse summary="**Gambar 7. Wireshark Server**" >}}
-[![Alt text](3wireshark_server.png "Topologi")](3wireshark_server.png)
-{{</ collapse >}}
+[![Gambar 6. Wireshark Client](http-3wireshark_client.png "Gambar 6. Wireshark Client")](http-3wireshark_client.png)
+
+[![Gambar 7. Wireshark Server](http-3wireshark_server.png "Gambar 7. Wireshark Server")](http-3wireshark_server.png)
 
 Perhatikan item nomor 3108 dan 3109 pada Gambar 6. Client menunggu data yang tak kunjung datang dari server selama 60 detik sebelum akhirnya koneksi direset oleh server. Sekarang perhatikan item 1031-1075 pada Gambar 7. Server berulang kali mencoba mentransmit packet TCP yang sama sebesar 1404 bytes ke arah server. Ini karena server tidak mendapat respon ACK dari client sehingga packet tersebut terus ditransmit ulang sebelum akhirnya koneksi di-reset. Yang terjadi adalah packet tersebut di-drop oleh Router-ISP-B, dan Router tersebut juga sebenarnya sudah mengirimkan pesan ICMP ke server agar server menurunkan ukuran packet yang dia kirim. Akan tetapi karena ICMP server mati, maka server tidak bisa menerima informasi tersebut (PMTUD tidak bisa terjadi).
 

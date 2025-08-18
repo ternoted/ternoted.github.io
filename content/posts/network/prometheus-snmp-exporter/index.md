@@ -1,7 +1,7 @@
 ---
 date: '2025-08-15T23:05:48+07:00'
 draft: false
-title: 'Prometheus SNMP Exporter'
+title: 'Tutorial Prometheus SNMP Exporter'
 summary: Tutorial instalasi SNMP-Exporter dan cara penggunaannya untuk Prometheus
 author: ["Ilham Wahayu Yanre"]
 cover:
@@ -37,7 +37,7 @@ Artikel ini membahas tentang cara menginstall [SNMP Exporter](https://github.com
 ## Instalasi SNMP Exporter
 ```bash
 
-# Download snmp_exporter.
+# Download SNMP Exporter.
 # Versi terbaru dapat dilihat di https://github.com/prometheus/snmp_exporter/releases
 grafana@grafana-wahayu:~$ cd /tmp
 grafana@grafana-wahayu:/tmp$ wget https://github.com/prometheus/snmp_exporter/releases/download/v0.29.0/snmp_exporter-0.29.0.linux-amd64.tar.gz
@@ -102,7 +102,7 @@ grafana@grafana-wahayu:/tmp/snmp_exporter-0.29.0.linux-amd64$ sudo systemctl sta
              └─2939 /usr/local/bin/snmp_exporter --config.file=/etc/prometheus/snmp_exporter/snmp.yml
 ```
 Kemudian akses UI SNMP Exporter melalui browser melalui ```IP_server:9116```. IP server pada tutorial ini adalah ```192.168.100.188```.
-[![SNMP Exporter](ui_snmp_exporter.png "SNMP Exporter")](ui_snmp_exporter.png)
+[![SNMP Exporter UI](http-ui_snmp_exporter.png "SNMP Exporter UI")](http-ui_snmp_exporter.png)
 
 ## Instalasi SNMP Exporter Config Generator
 
@@ -142,7 +142,7 @@ Selanjutnya kita akan membuat file ```snmp.yml``` baru menggunakan generator. Se
 
 Kita bisa menggunakan software [MIB Browser](https://ireasoning.com/download.shtml) untuk untuk mengeksplorasi MIB apa saja yang bisa kita dapatkan dari perangkat target. Informasi MIB yang digunakan oleh masing-masing vendor perangkat bisa ditemukan di internet. Misalnya untuk Mikrotik CCR bisa menggunakan SNMPv2-SMI, dan spesifiknya bisa menggunakan MIKROTIK-MIB.
 
-[![MIB Browser](mib_browser.png "MIB Browser")](mib_browser.png)
+[![MIB Browser](http-mib_browser.png "MIB Browser")](http-mib_browser.png)
 
 ### Konfigurasi File Generator
 
@@ -292,7 +292,7 @@ http://192.168.100.188:9116/snmp?target=192.168.100.13&auth=public_v2&module=mik
 # auth=public_v2 = Authentication name. Default-nya adalah ini untuk perangkat dengan SNMPv2 (tercantum di snmp.yml)
 # module=mikrotik = nama module (tercantum di snmp.yml)
 ```
-[![SNMP Exporter](ui_snmp_exporter-2.png "SNMP Exporter")](ui_snmp_exporter-2.png)
+[![SNMP Exporter](http-ui_snmp_exporter-2.png "Metric SNMP yang ditarik SNMP Exporter")](http-ui_snmp_exporter-2.png)
 
 Gambar di atas menunjukkan bahwa server berhasil menarik data SNMP sysDescr, sysUptime, hrSystemDate, hrProcessorLoad, dan mtrGaugeTable dari perangkat target.
 
