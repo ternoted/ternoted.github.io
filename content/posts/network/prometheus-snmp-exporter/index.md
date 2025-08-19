@@ -18,18 +18,18 @@ Artikel ini membahas tentang cara menginstall [SNMP Exporter](https://github.com
 
 ## Pre-requisites
 
-- **Pemahaman dasar** dalam menggunakan Linux  
-- **Pemahaman dasar** mengenai *MIB* (Management Information Base) dan *SNMP* (Simple Network Management Protocol)
-- **Mengetahui** fungsi **Grafana** dan **Prometheus**  
-- Tutorial ini dan lanjutannya tentang **Prometheus** dan **Grafana** akan menggunakan server:  
-  - Ubuntu `24.04.3 LTS (Minimal Version)`
-- Pastikan waktu pada server sudah akurat dan *System clock synchronized: yes*.  
-  - Cek menggunakan command:  
+>- **Pemahaman dasar** dalam menggunakan Linux  
+>- **Pemahaman dasar** mengenai *MIB* (Management Information Base) dan *SNMP* (Simple Network Management Protocol)
+>- **Mengetahui** fungsi **Grafana** dan **Prometheus**  
+>- Tutorial ini dan lanjutannya tentang **Prometheus** dan **Grafana** akan menggunakan server:  
+  >-- Ubuntu `24.04.3 LTS (Minimized Version)`
+>- Pastikan waktu pada server sudah akurat dan *System clock synchronized: yes*.  
+  >-- Cek menggunakan command:  
     ```bash
     timedatectl
     ```
-- Tutorial ini dibuat dengan asumsi **SNMP pada Router/Switch dapat diakses dari server**.  
-  - Cek menggunakan command:  
+>- Tutorial ini dibuat dengan asumsi **SNMP pada Router/Switch dapat diakses dari server**.  
+  >-- Cek menggunakan command:  
     ```bash
     snmpwalk -v2c -c community_name ip_target
     ```
