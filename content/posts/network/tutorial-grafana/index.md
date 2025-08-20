@@ -40,3 +40,44 @@ grafana@grafana-wahayu:~$ sudo systemctl daemon-reload
 grafana@grafana-wahayu:~$ sudo systemctl enable grafana-server.service
 grafana@grafana-wahayu:~$ sudo systemctl start grafana-server
 ```
+
+### Membuat Panel Visual
+
+Sekarang buka Grafana melalui browser dengan mengakses `IP_server:3000`.
+[![Grafana UI](http-grafana-ui.png#center "Grafana UI")](http-grafana-ui.png)
+
+Default user & pass-nya adalah admin:admin. Setelah login silakan ganti password-nya terlebih dahulu dengan yang lebih aman.
+Setelah login, silakan klik **DATA SOURCES** kemudian pilih Prometheus.
+[![Grafana Data Sources](http-data-source.png#center "Grafana Data Sources")](http-data-source.png)
+
+Karena Grafana dan Prometheus kita install di server yang sama, maka URL-nya bisa kita isi dengan `http://localhost:9090`
+[![Prometheus Connection](http-prometheus-connection.png#center "Prometheus Connection")](http-prometheus-connection.png)
+
+Selanjutnya scroll ke bagian paling bawah, dan klik **Save & test**. Jika berhasil, maka hasilnya akan seperti gambar di bawah.
+[![Save & test](http-save-test.png#center "Save & test")](http-save-test.png)
+
+Sekarang Grafana dan Prometheus sudah terhubung. Selanjutnya kembali ke **Home** dan klik **Dashboards**.
+Klik **Add visualization** dan pilih Prometheus sebagai data source-nya.
+[![New panel](http-new-panel.png#center "New Panel")](http-new-panel.png)
+
+Di sinilah kita akan membuat panel visual kita. Sebagai permulaan, kita akan membuat tampilan penggunaan CPU dengan menggunakan query "hrProcessorLoad".
+[![Penggunaan CPU](http-cpu-usage.png#center "Penggunaan CPU")](http-cpu-usage.png)
+
+Kita bisa mengubah tampilan panel ini dengan yang kita inginkan melalui panel **Visualization** pada bagian kanan.
+Misalnya merubah visualization dari **Time Series** (gambar atas) ke mode **Gauge** (gambar bawah).
+[![Mode Gauge](http-gauge.png#center "Mode Gauge")](http-gauge.png)
+
+### Variables
+
+Pada contoh di atas, kita menggunakan query `avg(hrProcessorLoad{instance="192.168.100.13"})` untuk menampilkan penggunaan CPU pada Router dengan IP tersebut.
+Bagaimana jika kita memiliki banyak Router yang ingin kita monitor? Kita bisa membuat variable sehingga kita bisa memilih Router mana yang ingin kita lihat melalui menu dropdown. Sehingga kita tidak perlu membuat panel satu persatu secara manual.
+
+Caranya klik **Back to dashboard** pada sudut kanan atas, lalu pilih **Settings**, kemudian pilih tab **Variables**, dan pilih **New variable**.
+
+Sebagai contoh, variable akan kita buat seperti di bawah ini:
+[![Variable](http-variable.png#center "Variable")](http-variable.png)
+
+Selanjutnya kita kembali ke Dashboard Penggunaan CPU yang sudah dibuat sebelumnya, dan update query menjadi `avg(hrProcessorLoad{instance="$router_name"})`. Artinya Grafana sekarang bisa membuat panel visual secara dinamis untuk setiap IP Router yang ada pada variable `router_name`.
+[![Dropdown](http-dropdown.png#center "Dropdown")](http-dropdown.png)
+
+Karena pada tutorial ini kita hanya menambahkan 1 Router pada konfig Prometheus, maka IP Router yang ditampilkan pada gambar di atas hanya 1.
