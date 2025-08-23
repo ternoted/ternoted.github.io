@@ -23,23 +23,23 @@ Artikel ini adalah lanjutan dari artikel sebelumnya, [Tutorial Prometheus](https
 ## Instalasi Grafana
 ```bash
 # Install packages yang dibutuhkan
-grafana@grafana-wahayu:~$ sudo apt-get install -y apt-transport-https software-properties-common wget
+grafana@grafana-ternoted:~$ sudo apt-get install -y apt-transport-https software-properties-common wget
 
 # Import GPG key
-grafana@grafana-wahayu:~$ sudo mkdir -p /etc/apt/keyrings/
+grafana@grafana-ternoted:~$ sudo mkdir -p /etc/apt/keyrings/
 wget -q -O - https://apt.grafana.com/gpg.key | gpg --dearmor | sudo tee /etc/apt/keyrings/grafana.gpg > /dev/null
 
 # Tambahkan repository untuk versi stable
-grafana@grafana-wahayu:~$ echo "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://apt.grafana.com stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
+grafana@grafana-ternoted:~$ echo "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://apt.grafana.com stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
 
 # Install Grafana OSS
-grafana@grafana-wahayu:~$ sudo apt-get update
-grafana@grafana-wahayu:~$ sudo apt-get install grafana
+grafana@grafana-ternoted:~$ sudo apt-get update
+grafana@grafana-ternoted:~$ sudo apt-get install grafana
 
 # Jalankan Grafana
-grafana@grafana-wahayu:~$ sudo systemctl daemon-reload
-grafana@grafana-wahayu:~$ sudo systemctl enable grafana-server.service
-grafana@grafana-wahayu:~$ sudo systemctl start grafana-server
+grafana@grafana-ternoted:~$ sudo systemctl daemon-reload
+grafana@grafana-ternoted:~$ sudo systemctl enable grafana-server.service
+grafana@grafana-ternoted:~$ sudo systemctl start grafana-server
 ```
 
 ### Membuat Panel Visual

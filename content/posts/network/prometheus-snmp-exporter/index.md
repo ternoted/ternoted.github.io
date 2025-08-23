@@ -40,28 +40,28 @@ Artikel ini membahas tentang cara menginstall [SNMP Exporter](https://github.com
 
 # Download SNMP Exporter.
 # Versi terbaru dapat dilihat di https://github.com/prometheus/snmp_exporter/releases
-grafana@grafana-wahayu:~$ cd /tmp
-grafana@grafana-wahayu:/tmp$ wget https://github.com/prometheus/snmp_exporter/releases/download/v0.29.0/snmp_exporter-0.29.0.linux-amd64.tar.gz
+grafana@grafana-ternoted:~$ cd /tmp
+grafana@grafana-ternoted:/tmp$ wget https://github.com/prometheus/snmp_exporter/releases/download/v0.29.0/snmp_exporter-0.29.0.linux-amd64.tar.gz
 
 # Ekstrak dan pindahkan file snmp_exporter ke /usr/local/bin
-grafana@grafana-wahayu:/tmp$ tar -xvf snmp_exporter-0.29.0.linux-amd64.tar.gz
-grafana@grafana-wahayu:/tmp$ cd snmp_exporter-0.29.0.linux-amd64
-grafana@grafana-wahayu:/tmp/snmp_exporter-0.29.0.linux-amd64$ ls
+grafana@grafana-ternoted:/tmp$ tar -xvf snmp_exporter-0.29.0.linux-amd64.tar.gz
+grafana@grafana-ternoted:/tmp$ cd snmp_exporter-0.29.0.linux-amd64
+grafana@grafana-ternoted:/tmp/snmp_exporter-0.29.0.linux-amd64$ ls
 LICENSE  NOTICE  snmp.yml  snmp_exporter
-grafana@grafana-wahayu:/tmp/snmp_exporter-0.29.0.linux-amd64$ sudo mv snmp_exporter /usr/local/bin
+grafana@grafana-ternoted:/tmp/snmp_exporter-0.29.0.linux-amd64$ sudo mv snmp_exporter /usr/local/bin
 
 # Buat directory untuk file snmp.yml dan pindahkan file snmp.yml ke sana
-grafana@grafana-wahayu:/tmp/snmp_exporter-0.29.0.linux-amd64$ sudo mkdir -p /etc/prometheus/snmp_exporter/
-grafana@grafana-wahayu:/tmp/snmp_exporter-0.29.0.linux-amd64$ sudo mv snmp.yml /etc/prometheus/snmp_exporter/
+grafana@grafana-ternoted:/tmp/snmp_exporter-0.29.0.linux-amd64$ sudo mkdir -p /etc/prometheus/snmp_exporter/
+grafana@grafana-ternoted:/tmp/snmp_exporter-0.29.0.linux-amd64$ sudo mv snmp.yml /etc/prometheus/snmp_exporter/
 
 # Buat user yang akan digunakan untuk systemd SNMP Exporter dan Prometheus
-grafana@grafana-wahayu:/tmp/snmp_exporter-0.29.0.linux-amd64$ sudo useradd --system --no-create-home --shell /usr/sbin/nologin prometheus
+grafana@grafana-ternoted:/tmp/snmp_exporter-0.29.0.linux-amd64$ sudo useradd --system --no-create-home --shell /usr/sbin/nologin prometheus
 
 # Ganti ownership config directory (/etc/prometheus/*) ke user prometheus
-grafana@grafana-wahayu:/tmp/snmp_exporter-0.29.0.linux-amd64$ sudo chown prometheus:prometheus /etc/prometheus/*
+grafana@grafana-ternoted:/tmp/snmp_exporter-0.29.0.linux-amd64$ sudo chown prometheus:prometheus /etc/prometheus/*
 
 # Buat file systemd untuk snmp_exporter
-grafana@grafana-wahayu:/tmp/snmp_exporter-0.29.0.linux-amd64$ sudo nano /etc/systemd/system/snmp_exporter.service
+grafana@grafana-ternoted:/tmp/snmp_exporter-0.29.0.linux-amd64$ sudo nano /etc/systemd/system/snmp_exporter.service
 
 ```
 
@@ -85,12 +85,12 @@ WantedBy=multi-user.target
 
 ```bash
 # Jalankan systemd snmp_exporter.service yang sudah dibuat
-grafana@grafana-wahayu:/tmp/snmp_exporter-0.29.0.linux-amd64$ sudo systemctl daemon-reload
-grafana@grafana-wahayu:/tmp/snmp_exporter-0.29.0.linux-amd64$ sudo systemctl enable snmp_exporter
-grafana@grafana-wahayu:/tmp/snmp_exporter-0.29.0.linux-amd64$ sudo systemctl start snmp_exporter
+grafana@grafana-ternoted:/tmp/snmp_exporter-0.29.0.linux-amd64$ sudo systemctl daemon-reload
+grafana@grafana-ternoted:/tmp/snmp_exporter-0.29.0.linux-amd64$ sudo systemctl enable snmp_exporter
+grafana@grafana-ternoted:/tmp/snmp_exporter-0.29.0.linux-amd64$ sudo systemctl start snmp_exporter
 
 # Cek status systemd tersebut. Jika berhasil, maka outputnya akan seperti ini:
-grafana@grafana-wahayu:/tmp/snmp_exporter-0.29.0.linux-amd64$ sudo systemctl status snmp_exporter
+grafana@grafana-ternoted:/tmp/snmp_exporter-0.29.0.linux-amd64$ sudo systemctl status snmp_exporter
 
 ● snmp_exporter.service - SNMP Exporter
      Loaded: loaded (/etc/systemd/system/snmp_exporter.service; enabled; preset: enabled)
@@ -111,30 +111,30 @@ Config file SNMP Exporter adalah ```snmp.yml``` yang ada di ```/etc/prometheus/s
 
 ```bash
 # Install packages yang dibutuhkan
-grafana@grafana-wahayu:~$ sudo apt-get install unzip build-essential libsnmp-dev
+grafana@grafana-ternoted:~$ sudo apt-get install unzip build-essential libsnmp-dev
 
 # Install git
-grafana@grafana-wahayu:~$ sudo apt install git -y
+grafana@grafana-ternoted:~$ sudo apt install git -y
 
 # Download dan install Go
-grafana@grafana-wahayu:~$ wget https://go.dev/dl/go1.25.0.linux-amd64.tar.gz
-grafana@grafana-wahayu:~$ sudo tar -C /usr/local -xzf go1.25.0.linux-amd64.tar.gz
+grafana@grafana-ternoted:~$ wget https://go.dev/dl/go1.25.0.linux-amd64.tar.gz
+grafana@grafana-ternoted:~$ sudo tar -C /usr/local -xzf go1.25.0.linux-amd64.tar.gz
 
 # Tambahkan baris
 # export PATH=$PATH:/usr/local/go/bin
 # ke
 # $HOME/.profile
-grafana@grafana-wahayu:~$ source $HOME/.profile
+grafana@grafana-ternoted:~$ source $HOME/.profile
 
 # Pastikan Go sudah terinstall dengan command
 # go version
-grafana@grafana-wahayu:~$ go version
+grafana@grafana-ternoted:~$ go version
 go version go1.25.0 linux/amd64
 
 # Clone snmp_exporter.git dan build generator
-grafana@grafana-wahayu:~$ git clone https://github.com/prometheus/snmp_exporter.git
-grafana@grafana-wahayu:~$ cd snmp_exporter/generator/
-grafana@grafana-wahayu:~/snmp_exporter/generator$ make generator mibs
+grafana@grafana-ternoted:~$ git clone https://github.com/prometheus/snmp_exporter.git
+grafana@grafana-ternoted:~$ cd snmp_exporter/generator/
+grafana@grafana-ternoted:~/snmp_exporter/generator$ make generator mibs
 ```
 
 Selanjutnya kita akan membuat file ```snmp.yml``` baru menggunakan generator. Sebagai contoh, kita akan membuat module untuk memonitor penggunaan CPU, temperatur, status PSU, uptime, dan penggunaan RAM pada perangkat Router Mikrotik CCR 2116.
@@ -150,7 +150,7 @@ Kita bisa menggunakan software [MIB Browser](https://ireasoning.com/download.sht
 Selanjutnya kita akan membuat file generator untuk meng-"generate" file ```snmp.yml```:
 
 ```bash
-grafana@grafana-wahayu:~/snmp_exporter/generator$ sudo nano generator_custom.yml 
+grafana@grafana-ternoted:~/snmp_exporter/generator$ sudo nano generator_custom.yml 
 ```
 ```bash
 # Isi file generator_custom.yml dengan format sepert ini:
@@ -183,7 +183,7 @@ modules:
 ```
 ```bash
 # Eksekusi generator untuk membuat file snmp.yml
-grafana@grafana-wahayu:~/snmp_exporter/generator$ ./generator generate -m mibs/ -g generator_custom.yml -o /etc/prometheus/snmp_exporter/snmp.yml
+grafana@grafana-ternoted:~/snmp_exporter/generator$ ./generator generate -m mibs/ -g generator_custom.yml -o /etc/prometheus/snmp_exporter/snmp.yml
 
 # -m = Directory mibs yang ter-download saat instalasi SNMP Exporter Generator
 # -g = File generator yang dibuat
@@ -281,7 +281,7 @@ modules:
 
 Apabila file ```snmp.yml``` sudah dipindah ke directory config ```/etc/prometheus/snmp_exporter/snmp.yml```, selanjutnya restart service snmp_exporter.
 ```bash
-grafana@grafana-wahayu:~/snmp_exporter/generator$ sudo systemctl restart snmp_exporter
+grafana@grafana-ternoted:~/snmp_exporter/generator$ sudo systemctl restart snmp_exporter
 ```
 Lalu akses UI SNMP Exporter melalui browser dengan URL seperti berikut:
 ```

@@ -81,7 +81,7 @@ params:
   # home-info mode
   homeInfoParams:
     Title: "Hello there \U0001F44B"
-    Content: Just a place where I note the cool, weird, and tricky things I run into while working in IT.
+    Content: This is a place where I note the cool, weird, and tricky things I run into while working in IT.
 
   socialIcons:
     - name: linkedin

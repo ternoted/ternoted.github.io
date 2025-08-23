@@ -2,7 +2,7 @@
 date: '2025-08-05T20:56:21+07:00'
 draft: false
 title: 'Cara Kerja Traceroute'
-summary: Membahas cara kerja traceroute dan beberapa miskonsepsi dalam menganalisa hasil traceroute
+summary: Cara kerja traceroute dan beberapa miskonsepsi dalam menganalisa hasil traceroute
 author: ["Ilham Wahayu Yanre"]
 cover:
   image: cover.png

@@ -1,8 +1,8 @@
 ---
 date: '2025-08-03T10:56:21+07:00'
 draft: false
-title: 'Studi Kasus MTU'
-summary: Replikasi kasus koneksi HTTPS "nyangkut" yang diakibatkan oleh MTU
+title: 'Masalah Jaringan yang Disebabkan oleh MTU Mismatch'
+summary: Replikasi masalah jaringan yang disebabkan oleh adanya perbedaan MTU pada sistem jaringan
 author: ["Ilham Wahayu Yanre"]
 cover:
   image: cover.png

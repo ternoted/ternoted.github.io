@@ -26,27 +26,27 @@ Artikel ini membahas cara menginstall [Prometheus](https://github.com/prometheus
 ```bash
 # Download Prometheus
 # Versi terbaru lihat di https://prometheus.io/download/
-grafana@grafana-wahayu:~$ cd /tmp
-grafana@grafana-wahayu:/tmp$ wget https://github.com/prometheus/prometheus/releases/download/v3.5.0/prometheus-3.5.0.linux-amd64.tar.gz
-grafana@grafana-wahayu:/tmp$ tar -xvzf prometheus-3.5.0.linux-amd64.tar.gz
-grafana@grafana-wahayu:/tmp$ cd prometheus-3.5.0.linux-amd64
-grafana@grafana-wahayu:/tmp/prometheus-3.5.0.linux-amd64$ ls
+grafana@grafana-ternoted:~$ cd /tmp
+grafana@grafana-ternoted:/tmp$ wget https://github.com/prometheus/prometheus/releases/download/v3.5.0/prometheus-3.5.0.linux-amd64.tar.gz
+grafana@grafana-ternoted:/tmp$ tar -xvzf prometheus-3.5.0.linux-amd64.tar.gz
+grafana@grafana-ternoted:/tmp$ cd prometheus-3.5.0.linux-amd64
+grafana@grafana-ternoted:/tmp/prometheus-3.5.0.linux-amd64$ ls
 LICENSE  NOTICE  prometheus  prometheus.yml  promtool
 
 # Pindahkan file prometheus dan promtool ke /usr/local/bin
-grafana@grafana-wahayu:/tmp/prometheus-3.5.0.linux-amd64$ sudo mv prometheus promtool /usr/local/bin
+grafana@grafana-ternoted:/tmp/prometheus-3.5.0.linux-amd64$ sudo mv prometheus promtool /usr/local/bin
 
 # Pindahkan config file prometheus.yml ke /etc/prometheus/
-grafana@grafana-wahayu:/tmp/prometheus-3.5.0.linux-amd64$ sudo mv prometheus.yml /etc/prometheus
+grafana@grafana-ternoted:/tmp/prometheus-3.5.0.linux-amd64$ sudo mv prometheus.yml /etc/prometheus
 
 # Buat directory database Prometheus
-grafana@grafana-wahayu:/tmp/prometheus-3.5.0.linux-amd64$ sudo mkdir /var/lib/prometheus
+grafana@grafana-ternoted:/tmp/prometheus-3.5.0.linux-amd64$ sudo mkdir /var/lib/prometheus
 
 # Ganti ownership directory ke user prometheus
-grafana@grafana-wahayu:/tmp/prometheus-3.5.0.linux-amd64$ sudo chown prometheus:prometheus /var/lib/prometheus/
+grafana@grafana-ternoted:/tmp/prometheus-3.5.0.linux-amd64$ sudo chown prometheus:prometheus /var/lib/prometheus/
 
 # Buat file systemd untuk Prometheus
-grafana@grafana-wahayu:/tmp/prometheus-3.5.0.linux-amd64$ sudo nano /etc/systemd/system/prometheus.service
+grafana@grafana-ternoted:/tmp/prometheus-3.5.0.linux-amd64$ sudo nano /etc/systemd/system/prometheus.service
 ```
 ```bash
 # Isi prometheus.service dengan ini
@@ -70,18 +70,18 @@ WantedBy=multi-user.target
 ```
 ```bash
 # Reload daemon
-grafana@grafana-wahayu:/tmp/prometheus-3.5.0.linux-amd64$ sudo systemctl daemon-reload
+grafana@grafana-ternoted:/tmp/prometheus-3.5.0.linux-amd64$ sudo systemctl daemon-reload
 
 # Enable Prometheus
-grafana@grafana-wahayu:/tmp/prometheus-3.5.0.linux-amd64$ sudo systemctl enable prometheus
+grafana@grafana-ternoted:/tmp/prometheus-3.5.0.linux-amd64$ sudo systemctl enable prometheus
 
 # Jalankan Prometheus
-grafana@grafana-wahayu:/tmp/prometheus-3.5.0.linux-amd64$ sudo systemctl start prometheus
+grafana@grafana-ternoted:/tmp/prometheus-3.5.0.linux-amd64$ sudo systemctl start prometheus
 
 # Cek status Prometheus
 # Jika berhasil akan seperti ini
 
-grafana@grafana-wahayu:/tmp/prometheus-3.5.0.linux-amd64$ sudo systemctl status prometheus
+grafana@grafana-ternoted:/tmp/prometheus-3.5.0.linux-amd64$ sudo systemctl status prometheus
 ● prometheus.service - Prometheus Server
      Loaded: loaded (/etc/systemd/system/prometheus.service; enabled; preset: e>
      Active: active (running) since Mon 2025-08-18 16:53:13 WIB; 25min ago
@@ -125,7 +125,7 @@ grafana@grafana-wahayu:/tmp/prometheus-3.5.0.linux-amd64$ sudo systemctl status 
 
 ```bash
 # Restart Prometheus
-grafana@grafana-wahayu:/tmp/prometheus-3.5.0.linux-amd64$ sudo systemctl restart prometheus
+grafana@grafana-ternoted:/tmp/prometheus-3.5.0.linux-amd64$ sudo systemctl restart prometheus
 ```
 Instalasi dan konfigurasi Prometheus sudah selesai. Selanjutnya kita buka browser dan akses UI Prometheus melalui `IP_server:9090`. Kemudian eksekusi query "up" pada query box untuk memastikan apakah target kita sudah terdeteksi oleh Prometheus.
 [![Prometheus UI](http-prometheus.png "Prometheus UI")](http-prometheus.png)
