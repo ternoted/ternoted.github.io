@@ -8,6 +8,7 @@ cover:
   image: cover.png
   hiddenInList: true
 aliases: ["/network"]
+tags: ["MTU"]
 series: ["Network"]
 ShowBreadCrumbs: true
 ShowToc: true

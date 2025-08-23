@@ -8,6 +8,7 @@ cover:
   image: cover.png
   hiddenInList: true
 aliases: ["/network"]
+tags: ["Grafana","Prometheus","SNMP"]
 series: ["Grafana"]
 ShowBreadCrumbs: true
 ShowToc: true
@@ -92,6 +93,8 @@ grafana@grafana-wahayu:/tmp/prometheus-3.5.0.linux-amd64$ sudo systemctl status 
      CGroup: /system.slice/prometheus.service
              └─7616 /usr/local/bin/prometheus --config.file=/etc/prometheus/pro...
 ```
+
+### Menghubungkan Prometheus dengan SNMP Exporter
 ```bash
 # Edit file /etc/prometheus/prometheus.yml dan tambahkan baris ini di bagian bawah
 

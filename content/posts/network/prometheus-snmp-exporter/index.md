@@ -8,6 +8,7 @@ cover:
   image: cover.png
   hiddenInList: true
 aliases: ["/network"]
+tags: ["Grafana","Prometheus","SNMP"]
 series: ["Grafana"]
 ShowBreadCrumbs: true
 ShowToc: true

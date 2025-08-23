@@ -5,6 +5,11 @@ pagination:
 copyright: "© 2025 [Ilham Wahayu Yanre](https://github.com/ternoted/ternoted.github.io)"
 theme: PaperMod
 
+taxonomies:
+  category: categories
+  tag: tags
+  series: serie
+
 enableRobotsTXT: false
 buildDrafts: false
 buildFuture: false

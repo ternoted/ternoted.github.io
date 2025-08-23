@@ -1,13 +1,14 @@
 ---
 date: '2025-08-19T15:48:46+07:00'
-draft: true
+draft: false
 title: 'Tutorial Grafana'
-summary: Tutorial instalasi Grafana dan menghubungkannya dengan Prometheus
+summary: Tutorial instalasi Grafana dan cara menghubungkannya dengan Prometheus
 author: ["Ilham Wahayu Yanre"]
 cover:
   image: cover.png
   hiddenInList: true
 aliases: ["/network"]
+tags: ["Grafana","Prometheus","SNMP"]
 series: ["Grafana"]
 ShowBreadCrumbs: true
 ShowToc: true
@@ -47,7 +48,7 @@ Sekarang buka Grafana melalui browser dengan mengakses `IP_server:3000`.
 [![Grafana UI](http-grafana-ui.png#center "Grafana UI")](http-grafana-ui.png)
 
 Default user & pass-nya adalah admin:admin. Setelah login silakan ganti password-nya terlebih dahulu dengan yang lebih aman.
-Setelah login, silakan klik **DATA SOURCES** kemudian pilih Prometheus.
+Setelah login, klik **DATA SOURCES** kemudian pilih Prometheus.
 [![Grafana Data Sources](http-data-source.png#center "Grafana Data Sources")](http-data-source.png)
 
 Karena Grafana dan Prometheus kita install di server yang sama, maka URL-nya bisa kita isi dengan `http://localhost:9090`
@@ -77,7 +78,13 @@ Caranya klik **Back to dashboard** pada sudut kanan atas, lalu pilih **Settings*
 Sebagai contoh, variable akan kita buat seperti di bawah ini:
 [![Variable](http-variable.png#center "Variable")](http-variable.png)
 
-Selanjutnya kita kembali ke Dashboard Penggunaan CPU yang sudah dibuat sebelumnya, dan update query menjadi `avg(hrProcessorLoad{instance="$router_name"})`. Artinya Grafana sekarang bisa membuat panel visual secara dinamis untuk setiap IP Router yang ada pada variable `router_name`.
+Selanjutnya kita kembali ke Dashboard Penggunaan CPU yang sudah dibuat sebelumnya, dan update query menjadi `avg(hrProcessorLoad{instance="$router_name"})`. Artinya Grafana akan membuat panel visual secara dinamis untuk setiap IP Router yang ada pada variable `$router_name`.
 [![Dropdown](http-dropdown.png#center "Dropdown")](http-dropdown.png)
 
-Karena pada tutorial ini kita hanya menambahkan 1 Router pada konfig Prometheus, maka IP Router yang ditampilkan pada gambar di atas hanya 1.
+Karena pada tutorial ini kita hanya menambahkan 1 Router pada konfig Prometheus, maka IP Router yang ditampilkan pada dropdown di atas hanya 1.
+
+## Penutup
+
+Menggunakan kombinasi Grafana dan Prometheus, kita bisa merancang monitoring system tanpa perlu mengeluarkan biaya untuk membeli license/subscription, karena keduanya bersifat open source dan gratis. Kita bahkan bisa membuatnya sedetail yang kita butuhkan. Di bawah ini adalah contoh panel-panel visual yang dikembangkan saat pembuatan artikel ini untuk monitoring hardware, trafik bandwidth dan packets pada Router.
+
+[![Router Monitoring System Menggunakan Grafana](http-grana-visual-panels.png#center "Router Monitoring System Menggunakan Grafana")](http-grana-visual-panels.png)
