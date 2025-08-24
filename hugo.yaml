@@ -28,7 +28,7 @@ params:
   keywords: [Blog, Portfolio, Ternoted]
   author: Ilham Wahayu Yanre
   # author: ["Me", "You"] # multiple authors
-  images: ["assets/images/og-image.jpeg"]
+  images: ["images/og-image.jpeg"]
   DateFormat: "2 January, 2006"
   defaultTheme: auto # dark, light
   disableThemeToggle: false
