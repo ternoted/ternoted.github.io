@@ -82,3 +82,7 @@ comment="IP yang membuat koneksi baru TCP ke port 22 akan masuk ke list ini dan 
 
 add action=drop chain=forward comment="Block IP yang ada dalam stage3_list" src-address-list=stage3_list 
 ```
+
+Bagaimana cara kerja rangkaian rule ini? Jadi ketika ada IP yang membuat koneksi SSH ke server/perangkat yang berada di bawah firewall, maka IP tersebut akan terdaftar ke address_list "stage1_list" selama 5 menit. Jika diasumsikan koneksi ini adalah koneksi normal, maka IP tersebut tidak akan membuat koneksi SSH baru lagi ke arah server dalam waktu singkat (5 menit).
+
+Jika dalam 5 menit IP tersebut kembali membuat koneksi SSH baru ke arah server, maka selanjutnya IP tersebut akan terdaftar ke address_list "stage2_list" selama 30 menit. Sampai tahap ini koneksi dari IP tersebut sudah dicurigai sebagai abnormal. Kemudian jika dalam 30 menit IP tersebut kembali membuat koneksi SSH baru ke arah server, maka IP tersebut akan terdaftar ke address_list "stage3_list" selama 6 jam. Semua IP yang terdaftar di "stage3_list" akan diblock selama 6 jam. Dengan begini, aktor brute force hanya bisa melancarkan aksinya sebanyak 2x dalam waktu 30 menit jika tidak ingin IP nya diblock.
