@@ -1,6 +1,6 @@
 ---
 date: '2025-08-24T17:37:57+07:00'
-draft: true
+draft: false
 title: 'Simulasi Brute Force dan Pencegahannya'
 summary: Simulasi brute force untuk membobol password SSH dan konfigurasi firewall (Mikrotik) sebagai pencegahannya
 author: ["Ilham Wahayu Yanre"]
@@ -83,6 +83,22 @@ comment="IP yang membuat koneksi baru TCP ke port 22 akan masuk ke list ini dan 
 add action=drop chain=forward comment="Block IP yang ada dalam stage3_list" src-address-list=stage3_list 
 ```
 
-Bagaimana cara kerja rangkaian rule ini? Jadi ketika ada IP yang membuat koneksi SSH ke server/perangkat yang berada di bawah firewall, maka IP tersebut akan terdaftar ke address_list "stage1_list" selama 5 menit. Jika diasumsikan koneksi ini adalah koneksi normal, maka IP tersebut tidak akan membuat koneksi SSH baru lagi ke arah server dalam waktu singkat (5 menit).
+Bagaimana cara kerja rangkaian rule ini? Jadi ketika ada IP yang membuat koneksi SSH ke server/perangkat yang berada di belakang firewall, maka IP tersebut akan terdaftar ke address_list "stage1_list" selama 5 menit. Jika diasumsikan koneksi ini adalah koneksi normal, maka IP tersebut tidak akan membuat koneksi SSH baru lagi ke arah server dalam waktu singkat (5 menit).
 
 Jika dalam 5 menit IP tersebut kembali membuat koneksi SSH baru ke arah server, maka selanjutnya IP tersebut akan terdaftar ke address_list "stage2_list" selama 30 menit. Sampai tahap ini koneksi dari IP tersebut sudah dicurigai sebagai abnormal. Kemudian jika dalam 30 menit IP tersebut kembali membuat koneksi SSH baru ke arah server, maka IP tersebut akan terdaftar ke address_list "stage3_list" selama 6 jam. Semua IP yang terdaftar di "stage3_list" akan diblock selama 6 jam. Dengan begini, aktor brute force hanya bisa melancarkan aksinya sebanyak 2x dalam waktu 30 menit jika tidak ingin IP nya diblock.
+
+### Pengujian Firewall
+
+Selanjutnya VM "Penjahat" akan kembali melakukan percobaan brute force ke VM "Korban" untuk melihat cara kerja firewall yang telah dibuat.
+
+[![Gambar 9. Percobaan Brute Force](http-hydra-error.png#center "Gambar 9. Percobaan Brute Force")](http-hydra-error.png)
+
+Beberapa saat setelah command brute force dieksekusi, hydra langsung menghentikan prosesnya karena terlalu banyak connection error ke arah target. Ini karena IP host hydra langsung diblock oleh firewall sehingga tidak ada trafik yang sampai ke server.
+
+[![Gambar 10. Firewall](http-firewall.png#center "Gambar 10. Firewall")](http-firewall.png)
+
+Dari sisi firewall terlihat IP VM "Penjahat" yang melakukan brute force terdaftar di address_list stage1 sampai stage3. Jadi ketika hydra mencoba membuat koneksi SSH ke server lebih dari 2x dalam rentang waktu yang ditentukan, firewall langsung memblokir IP nya.
+
+## Penutup
+
+Selalu ada celah keamanan di dalam sistem yang dibuat manusia. Contohnya pada firewall sederhana pada tulisan ini. Hacker dengan niat dan tekad yang kuat untuk membobol suatu sistem bisa saja menemukan cara lain untuk mencapai tujuannya. Oleh karena itu seperti kata pepatah, "_kalau bisa, jangan menyerang_".
