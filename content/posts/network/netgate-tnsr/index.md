@@ -1,7 +1,7 @@
 ---
 date: '2025-12-01T07:20:44+07:00'
 draft: false
-title: 'Simulasi Netgate TNSR di GNS3'
+title: 'Netgate TNSR - Simulasi Router Menggunakan GNS3'
 summary: Tutorial konfigurasi Netgate TNSR menggunakan GNS3
 author: ["Ilham Wahayu Yanre"]
 cover:

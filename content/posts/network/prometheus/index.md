@@ -1,7 +1,7 @@
 ---
 date: '2025-08-18T16:20:20+07:00'
 draft: false
-title: 'Tutorial Prometheus'
+title: 'Prometheus - Instalasi dan Penggunaan'
 summary: Tutorial instalasi Prometheus dan penggunaannya
 author: ["Ilham Wahayu Yanre"]
 cover:
@@ -9,13 +9,13 @@ cover:
   hiddenInList: true
 aliases: ["/network"]
 tags: ["Grafana","Prometheus","SNMP"]
-series: ["Grafana"]
+series: ["Network Monitoring System"]
 ShowBreadCrumbs: true
 ShowToc: true
 tocopen: true
 ---
 
-Artikel ini membahas cara menginstall [Prometheus](https://github.com/prometheus/prometheus) dan penggunannya. Ini adalah lanjutan dari artikel [Prometheus SNMP Exporter](https://ternoted.github.io/posts/network/prometheus-snmp-exporter/). Jadi tutorial dalam artikel ini dapat diikuti dengan asumsi SNMP Exporter sudah terinstall dan berjalan dengan benar.
+Artikel ini membahas cara menginstall [Prometheus](https://github.com/prometheus/prometheus) dan penggunannya. Ini adalah lanjutan dari series Network Monitoring System, dan artikel [Prometheus SNMP Exporter](https://ternoted.github.io/posts/network/prometheus-snmp-exporter/). Jadi tutorial dalam artikel ini dapat diikuti dengan asumsi SNMP Exporter sudah terinstall dan berjalan dengan benar.
 
 ## Pre-requisites
 >- **Pemahaman dasar** dalam menggunakan Linux  

@@ -1,7 +1,7 @@
 ---
 date: '2025-08-24T17:37:57+07:00'
 draft: false
-title: 'Simulasi Brute Force dan Pencegahannya'
+title: 'Bruteforce - Simulasi dan Pencegahan'
 summary: Simulasi brute force untuk membobol password SSH dan konfigurasi firewall (Mikrotik) sebagai pencegahannya
 author: ["Ilham Wahayu Yanre"]
 cover:

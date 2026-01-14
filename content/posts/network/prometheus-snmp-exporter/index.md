@@ -1,7 +1,7 @@
 ---
 date: '2025-08-15T23:05:48+07:00'
 draft: false
-title: 'Tutorial Prometheus SNMP Exporter'
+title: 'Prometheus SNMP Exporter - Instalasi dan Penggunaan'
 summary: Tutorial instalasi SNMP-Exporter dan cara penggunaannya untuk Prometheus
 author: ["Ilham Wahayu Yanre"]
 cover:
@@ -9,13 +9,13 @@ cover:
   hiddenInList: true
 aliases: ["/network"]
 tags: ["Grafana","Prometheus","SNMP"]
-series: ["Grafana"]
+series: ["Network Monitoring System"]
 ShowBreadCrumbs: true
 ShowToc: true
 tocopen: true
 ---
 
-Artikel ini membahas tentang cara menginstall [SNMP Exporter](https://github.com/prometheus/snmp_exporter). Software ini digunakan untuk menarik data SNMP dan menerjemahkannya ke format yang dapat dibaca oleh Prometheus. Karena by-default Prometheus tidak dapat membaca data SNMP secara langsung.
+Artikel ini membahas tentang cara menginstall [SNMP Exporter](https://github.com/prometheus/snmp_exporter) untuk Network Monitoring System. Software ini digunakan untuk menarik data SNMP dan menerjemahkannya ke format yang dapat dibaca oleh Prometheus. Karena by-default Prometheus tidak dapat membaca data SNMP secara langsung.
 
 ## Pre-requisites
 

@@ -1,7 +1,7 @@
 ---
 date: '2025-08-19T15:48:46+07:00'
 draft: false
-title: 'Tutorial Grafana'
+title: 'Grafana - Instalasi dan Penggunaan'
 summary: Tutorial instalasi Grafana dan cara menghubungkannya dengan Prometheus
 author: ["Ilham Wahayu Yanre"]
 cover:
@@ -9,13 +9,13 @@ cover:
   hiddenInList: true
 aliases: ["/network"]
 tags: ["Grafana","Prometheus","SNMP"]
-series: ["Grafana"]
+series: ["Network Monitoring System"]
 ShowBreadCrumbs: true
 ShowToc: true
 tocopen: true
 ---
 
-Artikel ini adalah lanjutan dari artikel sebelumnya, [Tutorial Prometheus](https://ternoted.github.io/posts/network/prometheus/). Artikel ini membahas tentang tutorial instalasi Grafana, cara menghubungkannya dengan Prometheus, dan cara membuat visual panel.
+Artikel ini adalah lanjutan dari series Network Monitoring System, dan artikel sebelumnya, [Tutorial Prometheus](https://ternoted.github.io/posts/network/prometheus/). Artikel ini membahas tentang tutorial instalasi Grafana, cara menghubungkannya dengan Prometheus, dan cara membuat visual panel.
 
 ## Pre-requisites
 >- **Prometheus** dan **SNMP Exporter** sudah terinstall dan berfungsi dengan benar
