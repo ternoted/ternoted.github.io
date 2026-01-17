@@ -1,6 +1,6 @@
 ---
 date: '2026-01-12T10:34:06+07:00'
-draft: true
+draft: false
 title: 'Prometheus Alertmanager - Instalasi dan Penggunaan'
 summary: Tutorial instalasi Prometheus Alertmanager dan penggunaannya
 author: ["Ilham Wahayu Yanre"]
@@ -46,7 +46,7 @@ WantedBy=multi-user.target
 Jika berhasil, `sudo systemctl status alertmanager` seharusnya menunjukkan enabled dan active (running). Selanjutnya Web UI dapat diakses melalui `IP_server:9093`.
 
 ### Menghubungkan Prometheus dengan Alertmanager
-Tambahkan baris di bawah pada file prometheus.yml, atau pastikan targets nya sama apabila barisnya sudah ada. Setelah itu reload Prometheus.
+Tambahkan baris di bawah pada file `prometheus.yml`, atau pastikan targets nya sama apabila barisnya sudah ada. Setelah itu reload Prometheus.
 ```bash
 # Alertmanager configuration
 alerting:
@@ -118,7 +118,7 @@ rule_files:
    - "/etc/prometheus/rules/cpu_alerts.yml"
   ```
 
-  Selanjutnya reload Prometheus dan Alertmanager. Untuk pengetesan alert, kita bisa merubah threshold value >80 menjadi lebih kecil dari penggunaan CPU perangkat yang sedang dimonitor. Sehingga alert rule akan ter-trigger sehingga alert akan dikirim ke receiver. Karena kita tidak menggunakan style/format untuk receiver Telegram pada alertmanager.yml, maka alert yang akan kita terima kurang lebih seperti ini:
+  Selanjutnya reload Prometheus dan Alertmanager. Untuk pengetesan alert, kita bisa merubah threshold value >80 menjadi lebih kecil dari penggunaan CPU perangkat yang sedang dimonitor. Alert rule akan ter-trigger sehingga alert akan dikirim ke receiver. Karena kita tidak menggunakan style/format untuk receiver Telegram pada alertmanager.yml, maka alert yang akan kita terima kurang lebih seperti ini:
 
   [![](http-alert-example.png#center "Triggered Alert")](http-alert-example.png)
 
