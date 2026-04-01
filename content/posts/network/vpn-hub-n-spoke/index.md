@@ -1,7 +1,7 @@
 ---
 date: '2026-03-30T08:14:19+07:00'
 draft: false
-title: 'IKEv2/IPSec VPN (Hub-and-Spoke)'
+title: 'IKEv2/IPSec VPN (Hub-and-Spoke) dengan IP Static'
 summary: Lab topologi VPN Hub-and-spoke menggunakan GNS3 yang dapat diaplikasikan di lapangan
 author: ["Ilham Wahayu Yanre"]
 cover:
