@@ -234,6 +234,11 @@ add dst-address=172.16.0.0/24 gateway=104.18.27.120
 add dst-address=192.168.0.0/24 gateway=104.18.27.120
 ```
 
+#### Quick Test
+
+Tes ping dari LAN Cisco ke LAN Mikrotik
+[![](http-test-ping.png#center "Quick Test")](http-test-ping.png)
+
 ## Troubleshooting
 >- Pastikan IP ptp reachable dari kedua sisi.
 >- Pada TNSR, gunakan command ```show ipsec tunnel verbose``` untuk menganalisa output IPSec.
