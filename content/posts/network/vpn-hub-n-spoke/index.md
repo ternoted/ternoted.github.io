@@ -2,7 +2,7 @@
 date: '2026-03-30T08:14:19+07:00'
 draft: false
 title: 'IKEv2/IPSec VPN (Hub-and-Spoke) dengan IP Static'
-summary: Lab topologi VPN Hub-and-spoke menggunakan GNS3 yang dapat diaplikasikan di lapangan
+summary: Lab VPN IKEv2/IPSec Hub-and-spoke menggunakan Router Netgate TNSR, Cisco IOSv, dan Mikrotik CHR pada GNS3
 author: ["Ilham Wahayu Yanre"]
 cover:
   image: cover.png
