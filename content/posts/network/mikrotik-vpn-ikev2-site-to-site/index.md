@@ -2,7 +2,7 @@
 date: '2026-04-17T10:09:02+07:00'
 draft: false
 title: 'Mikrotik VPN IPSec/IKEv2 (Site-to-site)'
-summary: Membahas konfigurasi VPN IKEv2 Site-to-site dengan IP static dan dynamic
+summary: Membahas konfigurasi VPN IKEv2 Site-to-site untuk router dengan IP static dan dynamic
 author: ["Ilham Wahayu Yanre"]
 cover:
   image: cover.png
@@ -19,7 +19,9 @@ ShowCodeCopyButtons: true
 ## Introduction
 
 Site-to-site adalah VPN yang menghubungkan LAN dari 2 router di lokasi yang berbeda (Site A - Site B).
-Artikel ini akan membahas bagaimana cara menghubungkan 2 router menggunakan VPN IKEv2 dengan metode autentikasi PSK (Pre-shared Key). Router pada Site A adalah Mikrotik-Hub, dan pada Site B Mikrotik-Spoke1. Penamaannya seperti itu karena nantinya topologi Site-to-site ini akan dikembangkan menjadi topologi Hub-and-spoke.
+Artikel ini akan membahas bagaimana cara menghubungkan 2 router menggunakan VPN IKEv2 dengan metode autentikasi PSK (Pre-shared Key). Router pada Site A diberi nama Mikrotik-Hub, dan pada Site B Mikrotik-Spoke1. Penamaannya seperti itu karena nantinya topologi Site-to-site ini akan dikembangkan menjadi topologi Hub-and-spoke.
+
+Konfigurasi ini bisa diterapkan pada keadaan di mana kedua router menggunakan IP static, atau hanya salah satunya saja yang menggunakan IP static, dan 1 router-nya lagi menggunakan IP dynamic, atau berada di belakang NAT.
 
 Semua konfigurasi akan disimulasikan pada GNS3 menggunakan Mikrotik CHR 7.20.4
 
