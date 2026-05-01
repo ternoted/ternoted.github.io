@@ -38,7 +38,7 @@ Semua konfigurasi akan disimulasikan pada GNS3 menggunakan Mikrotik CHR 7.20.4
 |WAN|150.0.0.150/24|
 |VPN IP|172.16.0.2/24|
 
-### Mikrotik-Hub Configuration
+### Mikrotik-Hub Configuration (Site A)
 - Memasang IP address yang diperlukan.
 ```bash
 /system identity set name=Mikrotik-Hub
@@ -111,7 +111,7 @@ NAT ini berfungsi untuk WAN dan VPN. Untuk route ke 0.0.0.0/0 (Internet), IP rou
 
 ---
 
-### Mikrotik-Spoke1 Configuration
+### Mikrotik-Spoke1 Configuration (Site B)
 - Memasang IP address yang diperlukan.
 ```bash
 /system identity set name=Mikrotik-Spoke1
