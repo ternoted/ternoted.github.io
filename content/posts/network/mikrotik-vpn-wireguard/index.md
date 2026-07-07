@@ -1,6 +1,6 @@
 ---
 date: '2026-07-06T09:50:36+07:00'
-draft: true
+draft: false
 title: 'Mikrotik VPN WireGuard dengan Split Tunnel'
 summary: Membahas konfigurasi WireGuard untuk membuat VPN Split Tunnel
 author: ["Ilham Wahayu Yanre"]
