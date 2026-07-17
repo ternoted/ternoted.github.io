@@ -80,7 +80,7 @@ params:
 
   # home-info mode
   homeInfoParams:
-    Title: "Hello there \U0001F44B"
+    Title: "Catatan seorang tukang reboot \U0001F4BB \U0001F528"
     Content: Knowledge is a hunt and writing is its shackle.
 
   socialIcons:
