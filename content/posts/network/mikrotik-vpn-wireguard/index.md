@@ -133,6 +133,43 @@ Tes ping,
 
 [![](http-12.jpeg#center "Ping dari smartphone ke LAN/server Budi di kantor")](http-12.jpeg)
 
+### Konfigurasi WireGuard Site-to-site
+
+Pada contoh ini 1 router memiliki 1 IP public, dan 1 router berada di belakang NAT. Jadi koneksi WireGuard akan dimulai oleh router NAT, dan router public akan bersifat sebagai responder.
+
+WireGuard interface dan peer pada router NAT akan dibuat berdasarkan Client Config yang di-generate oleh WireGuard router public berikut:
+
+```config
+[Interface]
+ListenPort = 51820
+PrivateKey = 2DuXXXXXXXXXXXXXXXXXXXXXXXXXXXXXm8XU=
+Address = 10.0.0.4/24
+DNS = 1.1.1.1, 8.8.8.8
+
+[Peer]
+PublicKey = AX+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXsS8Ec=
+AllowedIPs = 10.0.0.1/32, 192.168.200.0/24, 1.1.1.1/32, 8.8.8.8/32
+Endpoint = 202.xx.xxx.xx:13257
+PersistentKeepalive = 25
+```
+
+[![](http-13.png#center "[Interface] PrivateKey pada Client Config di-paste ke WireGuard interface Private Key")](http-13.png)
+
+[![](http-14.png#center "[Peer] PublicKey pada Client Config di-paste ke Peer Public Key. [Peer] AllowedIPs dimasukkan menjadi Peer Allowed Address")](http-14.png)
+
+Selanjutnya tambahkan IP Address 10.0.0.4/24 ke interface WireGuard. Tidak seperti WireGuard Client pada smartphone dan PC, IP dan route pada router harus ditambahkan secara manual
+
+```/ip address add address=10.0.0.4/24 interface=WG network=10.0.0.0```
+
+Tambahkan static route
+
+```/ip route add dst-address=192.168.200.0/24 gateway=10.0.0.1```
+
+Tambahkan Firewall NAT
+
+```/ip firewall nat add action=src-nat chain=srcnat out-interface=WG src-address-list=LAN to-addresses=10.0.0.4```
+
+
 Selesai.
 
 Berhasil.
