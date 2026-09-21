@@ -19,8 +19,9 @@ tocopen: true
 
 ## Pre-requisites
 >- GNS3 sudah terinstall dan berfungsi dengan normal (Tulisan ini tidak mencakup cara instalasi dan konfigurasi GNS3)
->- File .iso TNSR (dikarenakan TNSR bukan free software, maka cara mendapatkannya penulis serahkan kepada pembaca.){{< collapse >}}
-Actually you can download it for free somewhere on Internet
+>- File .iso TNSR (dikarenakan TNSR bukan free software, maka cara mendapatkannya penulis serahkan kepada pembaca.)
+{{< collapse summary="Actually..." >}}
+you can download it for free somewhere on Internet
 {{</ collapse >}}
 >- Naikkan spek GNS3 VM. Contoh, VCPU 12 dan RAM 12GB. Karena Qemu TNSR akan kita setup di dalam GNS3 VM.
 
